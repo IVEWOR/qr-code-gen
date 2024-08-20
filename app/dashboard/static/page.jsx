@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import QRCode from "qrcode";
 import { useState } from "react";
+import QRCode from "qrcode";
+import { nanoid } from 'nanoid'
 
 export default function Static() {
   const [qr, setQr] = useState("");
@@ -29,6 +30,8 @@ export default function Static() {
       setQr(qrCode);
     });
   };
+
+  console.log(nanoid(10))
   return (
     <div className="">
       <h1>Generate Static QR Code</h1>
@@ -53,7 +56,7 @@ export default function Static() {
           </button>
         </form>
         <div>
-          {!error && (
+          {!error && qr != "" && (
             <Image src={qr} alt="your qr code" width="300" height="300" />
           )}
         </div>
