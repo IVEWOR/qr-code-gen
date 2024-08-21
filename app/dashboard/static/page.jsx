@@ -1,24 +1,11 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
-import QRCode from "qrcode";
+import QRCode from "react-qr-code";
 import { nanoid } from 'nanoid'
 
 export default function Static() {
-  const [qr, setQr] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState(false);
-
-  const generateQR = async (url) => {
-    try {
-      new URL(url);
-      setError(false);
-      return await QRCode.toDataURL(url);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    }
-  };
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -26,9 +13,12 @@ export default function Static() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    generateQR(inputValue).then((qrCode) => {
-      setQr(qrCode);
-    });
+    try {
+      new URL(inputValue);
+      setError(false);
+    } catch (err) {
+      setError(true);
+    }
   };
 
   console.log(nanoid(10))
@@ -56,8 +46,8 @@ export default function Static() {
           </button>
         </form>
         <div>
-          {!error && qr != "" && (
-            <Image src={qr} alt="your qr code" width="300" height="300" />
+          {!error && inputValue != "" && (
+            <QRCode value={inputValue} />
           )}
         </div>
       </div>
