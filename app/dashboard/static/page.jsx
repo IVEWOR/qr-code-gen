@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
 import QRCode from "react-qr-code";
-import { nanoid } from 'nanoid';
 import * as htmlToImage from "html-to-image";
 
 export default function Static() {
