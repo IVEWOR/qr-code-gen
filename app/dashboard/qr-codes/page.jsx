@@ -1,4 +1,5 @@
 import ContainerBoxed from "@/components/ContainerBoxed";
+import { QRCODES } from "@/utils/siteUrls";
 
 const fetchRecords = async () => {
     const response = await fetch("http://localhost:3000/api/qr-codes");
@@ -24,8 +25,8 @@ export default async function QRCodes() {
                             </svg>
                             <div className="text-zinc-300">{record.destination_url}</div>
                             <div className="flex gap-3">
-                                <button className="bg-indigo-600 text-white text-sm p-1 px-4 rounded-lg hover:bg-indigo-700 focus:outline focus:outline-4 focus:outline-indigo-400">View</button>
-                                <button className="bg-zinc-600 text-white text-sm p-2 px-4 rounded-lg hover:bg-zinc-700 focus:outline focus:outline-4 focus:outline-zinc-400">Edit</button>
+                                <a href={`${QRCODES}/${record._id}`} className="bg-indigo-600 text-white text-sm p-2 px-4 rounded-lg hover:bg-indigo-700 focus:outline focus:outline-4 focus:outline-indigo-400">View</a>
+                                <a className="bg-zinc-600 text-white text-sm p-2 px-4 rounded-lg hover:bg-zinc-700 focus:outline focus:outline-4 focus:outline-zinc-400">Edit</a>
                             </div>
                         </div>
                     ))}

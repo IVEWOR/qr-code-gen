@@ -72,7 +72,7 @@ export default function Dynamic() {
                 {qr && !error &&
                     <div className="grid md:grid-cols-2 gap-4 mt-10">
                         <div ref={qrCodeRef}>
-                            <QRCode value={qr} style={{ margin: "0 auto", height: "100%", maxWidth: "100%", width: "100%" }} />
+                            <QRCode value={qr} level="M" style={{ margin: "0 auto", height: "100%", maxWidth: "100%", width: "100%" }} />
                         </div>
                         <div className="">
                             <p className="mb-4 mt-2">You can download the QR by clicking on the buttons below. Two options save it in PNG or SVG:</p>
@@ -82,6 +82,7 @@ export default function Dynamic() {
                     </div>
                 }
             </div>
+
         </ContainerBoxed>
     );
 }

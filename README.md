@@ -10,6 +10,8 @@ Overview - QR Code Generator
 - [x] Dynamic QR Code Gen
 - [x] Create a db to store the data
 - [x] Display entries
+- [ ] edit entries
+- [x] view entries
 - [ ] Record number of Scans
 - [ ] Record data in DB
 - [ ] Tracking
