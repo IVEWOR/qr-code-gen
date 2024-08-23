@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ContainerBoxed from "@/components/ContainerBoxed";
@@ -57,6 +56,7 @@ export default function EditQRCode({ params }) {
         <ContainerBoxed>
             <div className="py-10">
                 <h1 className="text-2xl font-semibold text-center mb-10">Edit QR Codes</h1>
+                <p className="mb-2">You can change the QR code URL without changing the QR code.</p>
                 <form onSubmit={handleSubmit} className="grid">
                     <input
                         type="url"

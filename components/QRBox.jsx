@@ -6,6 +6,7 @@ import handleDownloadPNG from "@/utils/handleDownloadPNG";
 import handleDownloadSVG from "@/utils/handleDownloadSVG";
 
 export default function QRBox({ record }) {
+
     // Ref for downloading the QR Code
     const qrCodeRef = useRef(null);
     return (
