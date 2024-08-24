@@ -14,7 +14,8 @@ Overview - QR Code Generator
 - [x] edit entries
 - [x] view entries
 - [x] configure nextauth.js
-- [x] configure OAUTH
+- [x] configure Google AUTH
+- [x] store users in database
 - [ ] use account login/sign up with email
 - [ ] user permissions - user should see only their records
 - [ ] Record number of Scans

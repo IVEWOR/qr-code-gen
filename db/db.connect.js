@@ -2,11 +2,10 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
     try {
-        await mongoose
-            .connect("mongodb://127.0.0.1:27017/qr-code-gen")
-            .then(() => console.log("db connected"));
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log("DB Connected");
     } catch (error) {
-        throw new Error("error in connecting db ", +error);
+        console.error("Error connecting DB");
     }
 };
 
