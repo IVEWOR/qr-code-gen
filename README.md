@@ -9,9 +9,13 @@ Overview - QR Code Generator
 - - [ ] Redirect nanoid url to the destination url
 - [x] Dynamic QR Code Gen
 - [x] Create a db to store the data
+- [x] Record data in DB
 - [x] Display entries
-- [ ] edit entries
+- [x] edit entries
 - [x] view entries
+- [x] configure nextauth.js
+- [x] configure OAUTH
+- [ ] use account login/sign up with email
+- [ ] user permissions - user should see only their records
 - [ ] Record number of Scans
-- [ ] Record data in DB
 - [ ] Tracking
