@@ -25,3 +25,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.btn {
+  height: 2.5rem;
+  min-height: 2.5rem;
+}

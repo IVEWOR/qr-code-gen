@@ -1,5 +1,4 @@
-Overview - QR Code Generator
-----------------------------
+## Overview - QR Code Generator
 
 ## Functionality
 
@@ -16,7 +15,7 @@ Overview - QR Code Generator
 - [x] configure nextauth.js
 - [x] configure Google AUTH
 - [x] store users in database
-- [ ] use account login/sign up with email
+- [ ] connect stripe
 - [ ] user permissions - user should see only their records
 - [ ] Record number of Scans
 - [ ] Tracking
