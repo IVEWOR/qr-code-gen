@@ -20,7 +20,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-native-svg": "^15.5.0",
-    "react-qr-code": "^2.0.15"
+    "react-qr-code": "^2.0.15",
+    "stripe": "^16.9.0"
   },
   "devDependencies": {
     "daisyui": "^4.12.10",
