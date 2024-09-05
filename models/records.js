@@ -17,10 +17,16 @@ const recordsSchema = new Schema(
             type: String,
             required: false,
         },
-        // Reference to the User who created the record
+        visitHistory: [
+            {
+                timestamp: {
+                    type: Date
+                }
+            }
+        ],
         createdBy: {
             type: Schema.Types.ObjectId,
-            ref: "User", // Reference to the User model
+            ref: "User",
             required: true,
         },
     },

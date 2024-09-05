@@ -25,6 +25,7 @@ export default function Create() {
     };
 
     const handleSubmit = async (e) => {
+        const nano_id = nanoid(10);
         // Prevent default form submission
         e.preventDefault();
         try {
