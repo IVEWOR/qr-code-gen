@@ -16,7 +16,13 @@ const recordsSchema = new Schema(
         qr_img: {
             type: String,
             required: false,
-        }
+        },
+        // Reference to the User who created the record
+        createdBy: {
+            type: Schema.Types.ObjectId,
+            ref: "User", // Reference to the User model
+            required: true,
+        },
     },
     {
         timestamps: true

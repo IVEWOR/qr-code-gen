@@ -3,6 +3,7 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/context/SessionProvider";
 import Navbar from "@/components/Navbar";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   return (
     <html className="bg-base-200" lang="en">
       <body className={inter.className}>

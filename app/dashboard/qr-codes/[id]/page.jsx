@@ -1,20 +1,50 @@
+"use client";
 import ContainerBoxed from "@/components/ContainerBoxed";
 import QRBox from "@/components/QRBox";
-import { notFound } from "next/navigation";
 import { QRCODES } from "@/utils/siteUrls";
 import DelQR from "@/components/DelQR";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import Loading from "@/components/Loading";
 
-export default async function QRCodeSingle({ params }) {
-  // Fetch the single QR
-  const response = await fetch(
-    `http://localhost:3000/api/qr-codes/${params.id}`
-  );
+export default function QRCode({ params }) {
+  const { data: session, status } = useSession();
+  const [record, setRecord] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (response.status === 404) {
-    return notFound();
+  useEffect(() => {
+    if (status === "authenticated") {
+      const fetchRecord = async () => {
+        try {
+          const response = await fetch(`/api/qr-codes/${params.id}`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch record');
+          }
+          const data = await response.json();
+          setRecord(data);
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchRecord();
+    }
+  }, [status, params.id]);
+
+  if (status === 'loading' || loading) {
+    return <Loading />;
   }
-  const record = await response.json();
+
+  if (status === 'unauthenticated') {
+    return <div>Please sign in to view your records.</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <ContainerBoxed>
