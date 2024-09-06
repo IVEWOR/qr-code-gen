@@ -74,17 +74,14 @@ export default function QRCodes() {
         <h1 className="text-2xl font-semibold text-center mb-10">QR Codes</h1>
         <div className="grid gap-4">
           {records.map((record) => (
-            <div
-              className="border-2 border-zinc-600 p-4 rounded-lg flex items-center gap-4 justify-between"
-              key={record._id}
-            >
-              <QRIcon />
-              <div className="text-zinc-300">{record.destination_url}</div>
-              <div className="flex gap-3">
-                <Link href={`${QRCODES}/${record._id}`} className="btn btn-primary">
-                  View
-                </Link>
-                <Link href={`${QRCODES}/edit/${record._id}`} className="btn btn-neutral">
+            <div className="shadow border p-4 rounded-box md:flex items-center gap-4 justify-between" key={record._id}>
+              <div className="flex gap-2 mb-4 md:mb-0 items-center">
+                <QRIcon />
+                <div className="text-zinc-600">{record.destination_url}</div>
+              </div>
+              <div className="flex gap-2">
+                <Link href={`${QRCODES}/${record._id}`} className="btn btn-success rounded-box min-h-10 h-10">View</Link>
+                <Link href={`${QRCODES}/edit/${record._id}`} className="btn btn-neutral rounded-box min-h-10 h-10">
                   Edit
                 </Link>
               </div>

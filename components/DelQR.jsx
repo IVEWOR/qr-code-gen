@@ -27,7 +27,7 @@ export default function DelQR({ id }) {
     }
   };
   return (
-    <button onClick={handleDelete} className="btn btn-error btn-outline w-1/2">
+    <button onClick={handleDelete} className="btn btn-error btn-outline rounded-box w-full">
       Delete QR
     </button>
   );

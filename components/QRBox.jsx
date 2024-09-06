@@ -1,13 +1,17 @@
 "use client";
 import { useRef } from "react";
-import QRCode from "react-qr-code";
+// import QRCode from "react-qr-code";
+import QRCode from "qrcode.react";
 
-import handleDownloadPNG from "@/utils/handleDownloadPNG";
-import handleDownloadSVG from "@/utils/handleDownloadSVG";
+// import handleDownloadPNG from "@/utils/handleDownloadPNG";
+// import handleDownloadSVG from "@/utils/handleDownloadSVG";
 
 export default function QRBox({ record }) {
   // Ref for downloading the QR Code
   const qrCodeRef = useRef(null);
+  const downloadQR = () => {
+
+  }
   return (
     <div className="grid md:grid-cols-2 gap-4 mt-10">
       <div ref={qrCodeRef}>
@@ -32,7 +36,8 @@ export default function QRBox({ record }) {
           <br /> You can download the QR by clicking on the buttons below. Two
           options save it in PNG or SVG:
         </p>
-        <div className="flex gap-2">
+        <button onClick={downloadQR}>Download</button>
+        {/* <div className="flex gap-2">
           <button
             onClick={() => handleDownloadPNG(qrCodeRef)}
             className="btn btn-primary"
@@ -45,7 +50,7 @@ export default function QRBox({ record }) {
           >
             Download SVG
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

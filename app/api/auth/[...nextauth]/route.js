@@ -62,6 +62,9 @@ export const authOptions = {
                 }
             }
             return token;
+        },
+        async redirect() {
+            return "/dashboard"
         }
     }
 };
