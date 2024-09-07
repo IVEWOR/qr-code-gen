@@ -8,6 +8,8 @@ import handleDownloadPNG from "@/utils/handleDownloadPNG";
 import handleDownloadSVG from "@/utils/handleDownloadSVG";
 
 import { useSession } from "next-auth/react";
+import Pricing from "@/components/Pricing";
+import Container from "postcss/lib/container";
 
 export default function Create() {
     const [qr, setQr] = useState(null);
@@ -54,8 +56,17 @@ export default function Create() {
         }
     };
 
-    if (status === "unauthenticated") {
-        return <div>Please login</div>
+    console.log(session)
+
+    if (!session.user.hasAccess) {
+        return (
+            <>
+                <div className="max-w-4xl mx-auto p-4 pt-10">
+                    <div className="text-2xl font-semibold">You don't have any subscription yet. Please choose an plan to continue.</div>
+                </div>
+                <Pricing />
+            </>
+        )
     }
 
     return (
@@ -68,13 +79,13 @@ export default function Create() {
                     <input
                         type="url"
                         name="url"
-                        className={`bg-transparent border select:bg-black border-zinc-600 rounded-lg p-2 px-3 focus:outline focus:outline-4 focus:outline-indigo-500 ${error && " border-red-500 outline outline-2 outline-red-500"
+                        className={`bg-transparent border select:bg-black border-zinc-600 rounded-lg p-2 px-3 focus:outline focus:outline-4 focus:outline-emerald-500 ${error && " border-red-500 outline outline-2 outline-red-500"
                             }`}
                         value={tempValue}
                         onChange={handleInputChange}
                         placeholder="Enter your URL"
                     />
-                    <button className="btn btn-primary mt-4" type="submit">
+                    <button className="btn btn-success mt-4" type="submit">
                         Generate QR
                     </button>
                 </form>

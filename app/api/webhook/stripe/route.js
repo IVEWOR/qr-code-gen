@@ -52,7 +52,6 @@ export async function POST(req) {
             user = await User.create({
               email: customer.email,
               name: customer.name,
-              customerId,
             });
 
             await user.save();
@@ -65,6 +64,7 @@ export async function POST(req) {
         // Update user data + Grant user access to your product. It's a boolean in the database, but could be a number of credits, etc...
         user.priceId = priceId;
         user.hasAccess = true;
+        user.customerId = customer.id
         await user.save();
 
         // Extra: >>>>> send email to dashboard <<<<

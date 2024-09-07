@@ -1,30 +1,36 @@
+import { redirect } from "next/navigation";
 import Records from "@/models/records";
 import connectDB from "@/db/db.connect";
-import { redirect } from "next/navigation";
 
 export default async function RedirectPage({ params }) {
-    const { redirectUrl } = params;
-    try {
-        await connectDB();
-        const updatedRecord = await Records.findOneAndUpdate(
-            {
-                redirect_url: `http://localhost:3000/q/${params.id}`
-            },
-            {
-                $push: { visitHistory: { timestamp: new Date() } },
-            },
-            { new: true }
-        );
+    const { id } = params;
 
-        if (!updatedRecord) {
-            return redirect('/404');;
+    // Call the API to update the record and get the destination URL
+    const response = await fetch(`http://localhost:3000/api/q/${id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (!response.ok) {
+        if (response.status === 404) {
+            return <h1>404 - Record not found</h1>;
         }
-
-        // Redirect to the destination_url
-        redirect(updatedRecord.destination_url);
-    } catch (error) {
-        console.error('Error updating visit history:', error);
-        return redirect("/500")
+        return <h1>500 - Internal Server Error</h1>;
     }
 
+    const data = await response.json();
+
+    await connectDB();
+    console.log("pasting from here client");
+
+    await Records.findOneAndUpdate(
+        { redirect_url: `http://localhost:3000/q/${id}` },
+        { $push: { visitHistory: { timestamp: new Date() } } },
+        { new: true }
+    );
+
+    // Perform the redirect to the destination URL
+    redirect(data.destination_url);
 }

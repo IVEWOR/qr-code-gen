@@ -50,7 +50,7 @@ const FeaturesList = ({ text }) => {
                     d="m4.5 12.75 6 6 9-13.5"
                 />
             </svg>
-            <p className="text-sm text-gray-300">{text}</p>
+            <p className="text-sm ">{text}</p>
         </div>
     );
 };
@@ -61,17 +61,17 @@ export default function Pricing() {
     return (
         <div className="max-w-4xl mx-auto p-4">
             {/* Plans */}
-            <div className="mt-6 grid sm:grid-cols-2 gap-4 mx-auto">
+            <div className="grid sm:grid-cols-2 gap-4 mx-auto">
                 {plans.map((plan, index) => (
-                    <div key={index} className="border border-gray-800 rounded-lg p-6">
+                    <div key={index} className="border border-gray-300 rounded-box p-6">
                         <h3 className="text-lg font-semibold pb-4">{plan.title}</h3>
-                        <p className="text-gray-300 text-sm pb-4">{plan.description}</p>
+                        <p className="text-sm pb-4">{plan.description}</p>
                         <div className="pb-4">
                             <span className="text-2xl font-bold">${plan.price}</span>
-                            <span className="text-gray-300 text-sm">{plan.duration}</span>
+                            <span className=" text-sm">{plan.duration}</span>
                         </div>
                         <a
-                            className="btn btn-primary w-full text-white"
+                            className="btn btn-success w-full rounded-box text-white"
                             target="_blank"
                             href={
                                 session ? (

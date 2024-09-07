@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import Pricing from "@/components/Pricing";
 
 const QRIcon = () => (
   <svg
@@ -60,8 +61,15 @@ export default function QRCodes() {
     return <Loading />
   }
 
-  if (status === 'unauthenticated') {
-    return <div>Please sign in to view your records.</div>;
+  if (!session.user.hasAccess) {
+    return (
+      <>
+        <div className="max-w-4xl mx-auto p-4 pt-10">
+          <div className="text-2xl font-semibold">You don't have any subscription yet. Please choose an plan to continue.</div>
+        </div>
+        <Pricing />
+      </>
+    )
   }
 
   if (error) {
